@@ -17,8 +17,8 @@ public final class Data {
     public static final double START_DELTA_TIME = 1e-9;
     public static final double TIME_START = START_DELTA_TIME;
     public static final double TIME_END = 1e-3;
-    public static final double MINIMAL_STEP = 1e-6;
-    public static final double MAXIMAL_STEP = 1e-3;
+    public static final double MINIMAL_STEP = 1e-10;
+    public static final double MAXIMAL_STEP = 1e-5;
 
     public static final int N = 16;
     public static final int NEWTON_STEPS = 7;

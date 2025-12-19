@@ -48,7 +48,7 @@ public final class CircuitSystem {
         jacobi[8][10] = 1.0;
         jacobi[8][11] = -1.0;
 
-        jacobi[9][4] = Components.L;
+        jacobi[9][9] = 1.0;
         jacobi[9][14] = -1.0;
 
         jacobi[10][0] = -Components.C1;
@@ -72,7 +72,7 @@ public final class CircuitSystem {
         jacobi[13][13] = 1.0 / Components.R_B;
 
         jacobi[14][1] = Components.C2;
-        jacobi[14][9] = 1.0;
+        jacobi[14][4] = Components.C2;
         jacobi[14][14] = 1.0 / Components.R2;
 
         // ЭДС
@@ -90,14 +90,14 @@ public final class CircuitSystem {
         final double dUc2 = pvApprox.dUc2;
         final double dUcb = pvApprox.dUcb;
         final double dIl1 = pvApprox.dIl1;
-        final double dIl2 = pvApprox.dIl2;
+        final double duC3 = pvApprox.duC3;
 
         // Переменные состояния
         final double uC1 = pvApprox.Uc1;
         final double uC2 = pvApprox.Uc2;
         final double uCb = pvApprox.Ucb;
         final double iL1 = pvApprox.Il1;
-        final double iL2 = pvApprox.Il2;
+        final double uC3 = pvApprox.uC3;
 
         // Потенциалы
         final double phi1 = pvApprox.phi1;
@@ -122,6 +122,7 @@ public final class CircuitSystem {
         final double iC1 = Components.C1 * dUc1;
         final double iC2 = Components.C2 * dUc2;
         final double iCb = Components.C_B * dUcb;
+        final double iC3 = Components.C3 * duC3;
 
         // Ток диода I_t * ( e^(U_cb / MFT) - 1)
         final double iD = Components.I_T * (Math.exp(uCb / Components.MFT) - 1.0);
@@ -135,21 +136,21 @@ public final class CircuitSystem {
         v[1] = dUc2 - (uC2 - prevState.uC2Prev) / deltaT;
         v[2] = dUcb - (uCb - prevState.uCbPrev) / deltaT;
         v[3] = dIl1 - (iL1 - prevState.iL1Prev) / deltaT;
-        v[4] = dIl2 - (iL2 - prevState.iL2Prev) / deltaT;
+        v[4] = duC3 - (uC3 - prevState.uC3Prev) / deltaT;
 
         // ПС
         v[5] = uC1 - (phi2 - phi1);
         v[6] = uC2 - (phi5 - phi4);
         v[7] = uCb - (phi3 - phi2);
         v[8] = Components.L * dIl1 - (phi2 - phi1);
-        v[9] = Components.L * dIl2 - phi5;
+        v[9] = uC3 - phi5;
 
         // Потенциалы (1 закон Кирхгофа)
         v[10] = -iR1 - iC1 - iL1 + iE;
         v[11] = -iCb - iRu - iD + iR1 + iC1 + iL1;
         v[12] = -iRb + iCb + iRu + iD;
         v[13] = -iC2 + iRb;
-        v[14] = iL2 + iR2 + iC2;
+        v[14] = iR2 + iC2 + iC3;
         // ЭДС
         v[15] = E_eq;
 
@@ -165,7 +166,7 @@ public final class CircuitSystem {
         sum += pv.Uc2 * pv.Uc2;
         sum += pv.Ucb * pv.Ucb;
         sum += pv.Il1 * pv.Il1;
-        sum += pv.Il2 * pv.Il2;
+        sum += pv.uC3 * pv.uC3;
 
         sum += pv.phi1 * pv.phi1;
         sum += pv.phi2 * pv.phi2;

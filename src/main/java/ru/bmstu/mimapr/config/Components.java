@@ -11,7 +11,8 @@ public final class Components {
     public static final double L = 0.001;
     // Емкости на конденсаторах
     public static final double C1 = 1e-6;
-    public static final double C2 = 1e-10;
+    public static final double C2 = 1e-6;
+    public static final double C3 = 1e-6;
     // Сопротивления на резисторах
     public static final double R1 = 1000.0;
     public static final double R2 = 1000.0;

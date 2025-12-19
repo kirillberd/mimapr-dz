@@ -14,7 +14,7 @@ if __name__ == "__main__":
         with open("phi5.txt", "r") as file:
             phi5 = list(map(float, file.readlines()))
 
-        with open("results.txt", "r") as file:
+        with open("results_new.txt", "r") as file:
             lines = file.readlines()
             t_pa9, phi1_pa9, phi2_pa9, phi4_pa9, phi5_pa9 = [], [], [], [], []
             for i in range(1, len(lines) - 1):

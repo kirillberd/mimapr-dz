@@ -25,7 +25,7 @@ public class Main {
 
             ResultLists results = new ResultLists();
             double nextSaveT = Data.TIME_START;
-            final double SAVE_DT = 1e-6;
+            final double SAVE_DT = 1e-7;
             int iteration = 0;
             while (timeDemon.currT < Data.TIME_END) {
                 NewtonMethodResults nmr =
@@ -62,7 +62,7 @@ public class Main {
                     prevStateVariables.uC2Prev = phaseVariables.Uc2;
                     prevStateVariables.uCbPrev = phaseVariables.Ucb;
                     prevStateVariables.iL1Prev = phaseVariables.Il1;
-                    prevStateVariables.iL2Prev = phaseVariables.Il2;
+                    prevStateVariables.uC3Prev = phaseVariables.uC3;
 
                     pvPrevPrev = pvPrev;
                     pvPrev = phaseVariables;

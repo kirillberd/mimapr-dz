@@ -6,5 +6,5 @@ public final class PrevStateVariables {
     public double uC2Prev = 0.0;
     public double uCbPrev = 0.0;
     public double iL1Prev = 0.0;
-    public double iL2Prev = 0.0;
+    public double uC3Prev = 0.0;
 }

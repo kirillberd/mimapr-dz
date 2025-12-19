@@ -10,17 +10,19 @@ public final class PhaseVariables {
     public double dUc1 = 0.0;
     public double dUc2 = 0.0;
     public double dUcb = 0.0;
+    public double duC3 = 0.0;
+
     // Производные от токов индуктивности
     public double dIl1 = 0.0;
-    public double dIl2 = 0.0;
 
     // Напряжения кондесатора
     public double Uc1 = 0.0;
     public double Uc2 = 0.0;
     public double Ucb = 0.0;
+    public double uC3 = 0.0;
+
     // Токи индуктивности
     public double Il1 = 0.0;
-    public double Il2 = 0.0;
 
     // Потенциалы на узлах
     public double phi1 = 0.0;
@@ -38,13 +40,13 @@ public final class PhaseVariables {
         r.dUc2 = this.dUc2 + o.dUc2;
         r.dUcb = this.dUcb + o.dUcb;
         r.dIl1 = this.dIl1 + o.dIl1;
-        r.dIl2 = this.dIl2 + o.dIl2;
+        r.duC3 = this.duC3 + o.duC3;
 
         r.Uc1 = this.Uc1 + o.Uc1;
         r.Uc2 = this.Uc2 + o.Uc2;
         r.Ucb = this.Ucb + o.Ucb;
         r.Il1 = this.Il1 + o.Il1;
-        r.Il2 = this.Il2 + o.Il2;
+        r.uC3 = this.uC3 + o.uC3;
 
         r.phi1 = this.phi1 + o.phi1;
         r.phi2 = this.phi2 + o.phi2;
@@ -59,8 +61,8 @@ public final class PhaseVariables {
 
     public double[] toArray() {
         return new double[] {
-            dUc1, dUc2, dUcb, dIl1, dIl2,
-            Uc1, Uc2, Ucb, Il1, Il2,
+            dUc1, dUc2, dUcb, dIl1, duC3,
+            Uc1, Uc2, Ucb, Il1, uC3,
             phi1, phi2, phi3, phi4, phi5,
             iE
         };
@@ -75,13 +77,13 @@ public final class PhaseVariables {
         pv.dUc2 = array[1];
         pv.dUcb = array[2];
         pv.dIl1 = array[3];
-        pv.dIl2 = array[4];
+        pv.duC3 = array[4];
 
         pv.Uc1 = array[5];
         pv.Uc2 = array[6];
         pv.Ucb = array[7];
         pv.Il1 = array[8];
-        pv.Il2 = array[9];
+        pv.uC3 = array[9];
 
         pv.phi1 = array[10];
         pv.phi2 = array[11];
